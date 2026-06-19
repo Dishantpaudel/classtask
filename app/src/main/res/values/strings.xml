@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ClassTask</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_about">About</string>
+    <string name="tab_images">Images</string>
+    <string name="tab_collections">Collections</string>
+</resources>
