@@ -1,7 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ClassTask</string>
-    <string name="nav_home">Home</string>
-    <string name="nav_about">About</string>
+    <string name="app_name">Unsplash</string>
+
     <string name="tab_images">Images</string>
     <string name="tab_collections">Collections</string>
+
+    <string name="nav_home">Home</string>
+    <string name="nav_favourites">Favourites</string>
+    <string name="nav_about">About</string>
+
+    <string name="about_dark_theme">Dark theme</string>
+
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login_register">Register</string>
+    <string name="login_app">Login</string>
+    <string name="login_error_empty">Invalid username and/or password</string>
+
+    <string name="image_camera">Camera</string>
+    <string name="image_aperture">Aperture</string>
+    <string name="image_focal_length">Focal Length</string>
+    <string name="image_shutter_speed">Shutter Speed</string>
+    <string name="image_iso">ISO</string>
+    <string name="image_dimensions">Dimensions</string>
+    <string name="image_views">Views</string>
+    <string name="image_downloads">Downloads</string>
+    <string name="image_likes">Likes</string>
+
+    <string name="description_image">Unsplash photo</string>
+    <string name="description_back">Return to previous screen</string>
+    <string name="description_password">Password visibility</string>
 </resources>
