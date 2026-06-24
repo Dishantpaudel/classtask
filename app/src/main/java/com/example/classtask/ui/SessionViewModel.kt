@@ -15,7 +15,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
 
     fun createAccount(username: String, password: String) {
         if (username.isEmpty() || password.isEmpty()) {
-            _authenticated.value = UiState.Error(application.getString(R.string.login_error_empty))
+            _authenticated.value = UiState.Error(getApplication<Application>().getString(R.string.login_error_empty))
             return
         }
         // TODO: Firebase.auth.createUserWithEmailAndPassword(username, password)
@@ -24,7 +24,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
 
     fun loginAccount(username: String, password: String) {
         if (username.isEmpty() || password.isEmpty()) {
-            _authenticated.value = UiState.Error(application.getString(R.string.login_error_empty))
+            _authenticated.value = UiState.Error(getApplication<Application>().getString(R.string.login_error_empty))
             return
         }
         // TODO: Firebase.auth.signInWithEmailAndPassword(username, password)

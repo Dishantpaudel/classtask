@@ -17,12 +17,12 @@ val unsplashAccessKey: String = localProperties.getProperty("unsplash.access.key
 
 android {
     namespace = "com.example.classtask"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.classtask"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -61,9 +61,6 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.lifecycle.runtime.compose)
-
-    implementation(libs.androidx.nav3.runtime)
-    implementation(libs.androidx.nav3.ui)
 
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)

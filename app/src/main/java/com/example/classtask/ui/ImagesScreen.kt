@@ -19,6 +19,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -47,6 +48,7 @@ import coil3.request.ImageRequest
 import com.example.classtask.R
 import com.example.classtask.data.UnsplashItem
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ImagesScreen(
     unsplashViewModel: UnsplashViewModel,

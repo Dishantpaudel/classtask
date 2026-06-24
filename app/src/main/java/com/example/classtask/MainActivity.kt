@@ -17,14 +17,13 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.navigation3.runtime.entryProvider
-import androidx.navigation3.ui.NavDisplay
 import com.example.classtask.data.UnsplashItem
 import com.example.classtask.repository.AppPreferences
 import com.example.classtask.ui.AboutScreen
@@ -61,7 +60,7 @@ class MainActivity : ComponentActivity() {
             val preferencesTheme = preferences.isDarkTheme()
             val isDarkTheme = if (preferencesTheme == -1) isSystemInDarkTheme() else preferencesTheme == 1
             val darkTheme = rememberSaveable { mutableStateOf(isDarkTheme) }
-            val backstack = remember { mutableStateListOf<Any>(BottomNavigationScreen.Home) }
+            var current by remember { mutableStateOf<BottomNavigationScreen>(BottomNavigationScreen.Home) }
 
             UnsplashTheme(darkTheme = darkTheme.value) {
                 Scaffold(
@@ -74,12 +73,8 @@ class MainActivity : ComponentActivity() {
                         NavigationBar {
                             bottomBar.forEach { screen ->
                                 NavigationBarItem(
-                                    selected = backstack.lastOrNull() == screen,
-                                    onClick = {
-                                        if (backstack.lastOrNull() != screen) {
-                                            backstack.add(screen)
-                                        }
-                                    },
+                                    selected = current == screen,
+                                    onClick = { current = screen },
                                     label = { Text(stringResource(screen.resId)) },
                                     icon = {
                                         Icon(
@@ -94,27 +89,17 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize()
                 ) { innerPadding ->
                     Column(modifier = Modifier.padding(innerPadding)) {
-                        NavDisplay(
-                            backStack = backstack,
-                            onBack = { backstack.removeLastOrNull() },
-                            entryProvider = entryProvider {
-                                entry<BottomNavigationScreen.Home> {
-                                    MainScreen(
-                                        unsplashViewModel = unsplashViewModel,
-                                        openDetails = openDetails
-                                    )
-                                }
-                                entry<BottomNavigationScreen.Favourites> {
-                                    FavouritesScreen()
-                                }
-                                entry<BottomNavigationScreen.About> {
-                                    AboutScreen(
-                                        darkTheme = darkTheme,
-                                        saveAction = { value -> preferences.setDarkTheme(value) }
-                                    )
-                                }
-                            }
-                        )
+                        when (current) {
+                            BottomNavigationScreen.Home -> MainScreen(
+                                unsplashViewModel = unsplashViewModel,
+                                openDetails = openDetails
+                            )
+                            BottomNavigationScreen.Favourites -> FavouritesScreen()
+                            BottomNavigationScreen.About -> AboutScreen(
+                                darkTheme = darkTheme,
+                                saveAction = { value -> preferences.setDarkTheme(value) }
+                            )
+                        }
                     }
                 }
             }

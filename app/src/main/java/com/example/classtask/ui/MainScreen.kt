@@ -3,6 +3,7 @@ package com.example.classtask.ui
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.SecondaryTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
@@ -20,6 +21,7 @@ private enum class TopBarTabs(@StringRes val resId: Int) {
     COLLECTIONS(R.string.tab_collections)
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
     unsplashViewModel: UnsplashViewModel,
